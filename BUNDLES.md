@@ -1,0 +1,37 @@
+## Cabbage available bundles
+
+* accessibility
+* cabbage-developer
+* coffee-script
+* company
+* completion
+* css
+* cucumber
+* diff
+* ergonomic
+* erlang
+* git
+* haml-and-sass
+* html
+* irc
+* jabber
+* java
+* javascript
+* latex
+* less-css
+* lisp
+* markdown
+* maximize
+* org
+* plone
+* power-edit
+* project
+* python
+* rails
+* rect-mark
+* ruby
+* snippets
+* spelling
+* terminal
+* xml
+* yaml

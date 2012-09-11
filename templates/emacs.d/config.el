@@ -36,6 +36,7 @@
         ;; maximize
         ;; coffee-script
         ;; less-css
+        ;; github
         ))
 
 

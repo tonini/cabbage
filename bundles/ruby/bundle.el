@@ -31,12 +31,31 @@
 ;; We never want to edit Rubinius bytecode
 (add-to-list 'completion-ignored-extensions ".rbc")
 
+(defun cabbage-restore-setup-after-test-run ()
+  (interactive)
+
+  (cabbage-enlargement-restore)
+  (quit-window)
+  (define-key compilation-mode-map "q" 'quit-window)
+  (define-key ruby-compilation-minor-mode-map "q" 'quit-window))
+
 (defun cabbage-run-single-ruby-file (filename)
   (let* ((name (file-name-nondirectory (car (split-string filename))))
          (name-buffer (format "*%s*" name)))
     (if (get-buffer name-buffer)
         (kill-buffer name-buffer))
-    (ruby-compilation-run filename)))
+    (ruby-compilation-run filename)
+
+    (select-window (get-buffer-window name-buffer))
+    (cabbage-enlargement-enlarge)
+    (define-key ruby-compilation-minor-mode-map "q" 'cabbage-restore-setup-after-test-run)))
+
+(defun cabbage-rspec-run-single-file (filename)
+  (rspec-run-single-file filename)
+
+  (select-window (get-buffer-window "*compilation*"))
+  (cabbage-enlargement-enlarge)
+  (define-key compilation-mode-map "q" 'cabbage-restore-setup-after-test-run))
 
 (defun cabbage-open-spec-other-buffer ()
   (interactive)
@@ -106,7 +125,7 @@
   (cabbage--set-pairs '("(" "{" "[" "\"" "\'" "|"))
 
   (when (and buffer-file-name (string-match "_spec.rb$" buffer-file-name))
-    (setq cabbage-testing-execute-function 'rspec-run-single-file))
+    (setq cabbage-testing-execute-function 'cabbage-rspec-run-single-file))
 
   (when (and buffer-file-name (string-match "_test.rb$" buffer-file-name))
     (setq cabbage-testing-execute-function 'cabbage-run-single-ruby-file))

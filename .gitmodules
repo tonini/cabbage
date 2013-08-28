@@ -85,7 +85,7 @@
 	url = http://jblevins.org/git/markdown-mode.git
 [submodule "vendor/rinari"]
 	path = vendor/rinari
-	url = https://github.com/technomancy/rinari.git
+	url = https://github.com/eschulte/rinari.git
 [submodule "vendor/jump"]
 	path = vendor/jump
 	url = https://github.com/eschulte/jump.el.git

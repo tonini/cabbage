@@ -1,6 +1,6 @@
 (cabbage-vendor 'coffee-mode)
 
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee\\(\\.erb\\)?$" . js-mode))
 (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 (defun cabbage-coffee-mode-hook ()

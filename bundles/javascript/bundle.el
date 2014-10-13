@@ -14,8 +14,7 @@
 
 ;;;; -------------------------------------
 ;;;; Bundle
-(add-to-list 'auto-mode-alist '("\\.js\\(on\\)?$" . js-mode))
-
+(add-to-list 'auto-mode-alist '("\\.js\\(on\\|\\.erb\\)?$" . js-mode))
 
 ;; Defuns
 
